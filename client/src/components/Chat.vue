@@ -22,6 +22,11 @@
 import Vue from 'vue'
 import { mapState, mapActions } from 'vuex'
 
+interface Imessage {
+  message: string,
+  id: string
+}
+
 export default Vue.extend({
   name: 'Chat',
   props: {
@@ -30,7 +35,7 @@ export default Vue.extend({
 
   data: () => ({
     textarea: '',
-    messages: [] as string[]
+    messages: [] as Imessage[]
   }),
 
   computed: {
@@ -52,7 +57,7 @@ export default Vue.extend({
   },
 
   watch: {
-    messages (messages) {
+    messages (messages: Imessage) {
       localStorage.messages = JSON.stringify(messages);
     }
   },
@@ -62,7 +67,7 @@ export default Vue.extend({
       this.messages = JSON.parse(localStorage.messages);
     }
 
-    this.p2p.on('peer-msg', data => {
+    this.p2p.on('peer-msg', (data: Imessage) => {
       this.messages.push(data)
     })
   },
@@ -72,6 +77,6 @@ export default Vue.extend({
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .sender {
-    
+
   }
 </style>

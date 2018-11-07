@@ -13,7 +13,7 @@ const peerInit = () => {
   })
 }
 
-const socket = io('localhost:3000')
+const socket = io(process.env.NODE_ENV !== 'production' ? 'localhost:3000' : '')
 const p2p = new P2P(socket, {}, peerInit) as Ip2p
 
 p2p.on('peer-msg', data => {

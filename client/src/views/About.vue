@@ -1,5 +1,12 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <img alt="Vue logo" src="../assets/diagram.png">
   </div>
 </template>
+
+<style lang="scss" scoped>
+  img {
+    height: 100vh;
+    width: auto;
+  }
+</style>
