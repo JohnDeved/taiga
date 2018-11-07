@@ -12,7 +12,6 @@ dotenv.config()
 import * as passport from 'passport'
 
 import * as api from './routes/api'
-import * as auth from './routes/auth'
 import { models } from './db/shema'
 
 let app = express()
@@ -25,23 +24,14 @@ app.use(logger('dev') as RequestHandlerParams)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser() as RequestHandlerParams)
-app.use(session({ secret: 'evvt rocks and is fair!' }))
+// app.use(session({ secret: 'taiga rocks and is fair!' }))
 
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
-app.use((req, res, next) => {
-  if (req.user || /^\/auth/.test(req.url)) {
-    return next()
-  }
-  console.log('user not logged in!')
-  res.sendfile(path.join(__dirname, 'views', 'login.html'))
-})
-
-app.use('/', express.static(path.join(__dirname, '..', 'client', 'dist')))
+app.use('/', express.static(path.join(__dirname, '..', '..', 'client', 'dist')))
 
 app.use('/api', api)
-app.use('/auth', auth)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
