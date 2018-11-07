@@ -72,9 +72,11 @@ export default Vue.extend({
 
   watch: {
     messages (messages: Imessage) {
-      localStorage.messages = JSON.stringify(messages);
-
-      this.$refs.chat.scrollTo(0, this.$refs.chat.scrollHeight)
+      localStorage.messages = JSON.stringify(messages)
+      
+      setTimeout(() => {
+        this.$refs.chat.scrollTo(0, this.$refs.chat.scrollHeight)
+      }, 300);
     }
   },
 
