@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "tsc && node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "googleapis": "^34.0.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.2.18",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "rarbg-api-ts": "^1.0.22",
+    "tvmaze-api-ts": "^1.0.20"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.2.17",
+    "@types/node": "^10.10.3",
+    "@types/passport": "^0.4.6",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.0.3"
+  }
+}

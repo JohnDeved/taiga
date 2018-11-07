@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./bin/www",
+    "target": "es6",
+    "module": "commonjs"
+  }
+}

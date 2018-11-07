@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>evvt</title>
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
+
+    #app {
+      display: flex;
+      align-items: center;
+      width:100%;
+      justify-content: center;
+      height:100vh;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    video {
+      position: absolute;
+      z-index: -2;
+      width: 100%;
+      height: auto;
+      filter: blur(10px)
+    }
+
+    .con-vs-loading {
+      z-index: -1 !important
+    }
+
+    * {
+      font-family: Roboto,Avenir,Helvetica,Arial,sans-serif !important
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://dev.jspm.io/vuesax/dist/vuesax.css">
+</head>
+<body>
+  <div id="app">
+    <video src="https://ia800206.us.archive.org/24/items/CaptainKidd_/CaptainKidd_512kb.mp4" 
+      autoplay muted loop></video>
+    <vs-row vs-justify="center">
+      <vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-w="6">
+        <vs-card style="width: 200px; background: rgba(255, 255, 255, 0.70);">
+          <div slot="header">
+            <h3>
+              Ahoi there, Pirate!
+            </h3>
+          </div>
+          <div>
+            <span>Looks like youre lost at sea. Need a lift?</span>
+          </div>
+          <div slot="footer">
+            <vs-row vs-justify="flex-end">
+              <a href="/auth/google">
+                <vs-button vs-color="primary">Login Using Google</vs-button>
+              </a>
+            </vs-row>
+          </div>
+        </vs-card>
+      </vs-col>
+    </vs-row>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuesax"></script>
+  <script>
+    const vue = new Vue({
+      el: '#app',
+      data: () => ({
+        messaje:'Login Using Google'
+      })
+    })
+
+    vue.$vs.loading({
+      background:'black',
+      color:'white',
+      type: 'corners'
+    })
+
+    const video = document.querySelector('video')
+    video.onloadeddata = () => (video.currentTime = Math.random() * video.duration)
+    video.onseeked = () => vue.$vs.loading.close()
+  </script>
+</body>
+</html>
