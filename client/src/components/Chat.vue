@@ -2,8 +2,8 @@
   <div>
 
     <div ref="chat" :class="{
-      chat: true, 
-      top: chatScroll !== 0, 
+      chat: true,
+      top: chatScroll !== 0,
       bottom: chatScroll !== chatHeight
     }" v-scroll="onScroll">
       <vs-row vs-align="flex-start" vs-type="flex" vs-justify="center" vs-w="12">
@@ -73,22 +73,22 @@ export default Vue.extend({
   watch: {
     messages (messages: Imessage) {
       localStorage.messages = JSON.stringify(messages)
-      
+
       setTimeout(() => {
         this.$refs.chat.scrollTo(0, this.$refs.chat.scrollHeight)
-      }, 300);
+      }, 300)
     }
   },
 
   mounted () {
     if (localStorage.messages) {
-      this.messages = JSON.parse(localStorage.messages);
+      this.messages = JSON.parse(localStorage.messages)
     }
 
     this.p2p.on('peer-msg', (data: Imessage) => {
       this.messages.push(data)
     })
-  },
+  }
 })
 </script>
 

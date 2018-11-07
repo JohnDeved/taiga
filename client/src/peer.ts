@@ -20,4 +20,4 @@ p2p.on('peer-msg', data => {
   console.log(data)
 })
 
-export default p2p 
+export default p2p

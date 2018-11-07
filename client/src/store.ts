@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import vuescroll from 'vue-scroll'
 
+import p2p from './peer'
+
 Vue.use(vuescroll)
 Vue.use(Vuex)
-
-import p2p from './peer'
 
 export default new Vuex.Store({
   state: {
@@ -15,6 +15,6 @@ export default new Vuex.Store({
 
   },
   actions: {
-    
+
   }
 })
