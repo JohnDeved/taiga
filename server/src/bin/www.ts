@@ -8,6 +8,9 @@ import * as app from '../app'
 import * as Debug from 'debug'
 import * as http from 'http'
 
+import * as socket from 'socket.io'
+import * as socketP2P from 'socket.io-p2p-server'
+
 const debug = Debug('server:server')
 
 /**
@@ -22,6 +25,17 @@ app.set('port', port)
  */
 
 let server = http.createServer(app)
+
+const io = socket(server)
+const p2p = socketP2P.Server
+
+io.use(p2p)
+
+io.on('connection', socket => {
+  socket.on('peer-msg', data => {
+    console.log(data)
+  })
+})
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -88,5 +102,5 @@ function onListening () {
   let bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port
-  debug('Listening on ' + bind)
+  console.info('Listening on ' + bind)
 }

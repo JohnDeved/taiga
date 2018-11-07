@@ -16,3 +16,9 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app')
+
+// declare global {
+//   interface Window {
+//     peer: Peerjs
+//   }
+// }
