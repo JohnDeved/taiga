@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.49174008f523ac223c7b47cae7f4916e.js"
+  "/precache-manifest.261c1ed61bc70c44019681f5c4858a02.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "taiga"});
