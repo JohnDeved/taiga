@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "taiga",
   "scripts": {
-    "postinstall": "cd client && npm i && npm run build",
+    "postinstall": "cd client && npm run build",
     "start": "cd server && tsc && node dist/bin/www"
   },
   "author": "",
