@@ -4,7 +4,29 @@
   "description": "taiga",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd client && npm i && npm run build && cd ../server && npm i && tsc && node dist/bin/www"
+    "start": "cd server && tsc && node dist/bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^6.0.0",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "mongoose": "^5.2.18",
+    "morgan": "~1.9.0",
+    "passport": "^0.4.0",
+    "socket.io": "^2.1.1",
+    "socket.io-p2p-server": "^1.2.0",
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.2.17",
+    "@types/node": "^10.10.3",
+    "@types/passport": "^0.4.6",
+    "@types/socket.io": "^2.1.0",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.0.3"
   },
   "author": "",
   "license": "ISC"
