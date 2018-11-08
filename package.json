@@ -4,7 +4,7 @@
   "description": "taiga",
   "scripts": {
     "heroku-postinstall": "cd client && npm i && npm run build",
-    "start": "cd server && tsc && node dist/bin/www"
+    "start": "cd server && npm i && tsc && node dist/bin/www"
   },
   "author": "",
   "license": "ISC"
