@@ -17,7 +17,7 @@
     <vs-row class="sender" vs-align="flex-start" vs-type="flex" vs-justify="center" vs-w="12">
       <vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-w="10">
         <vs-textarea class="chatter"  v-model="textarea" @keyup.enter="send"/>
-        <vs-button class="send" type="flat" color="primary" icon="send"></vs-button>
+        <vs-button class="send" type="flat" color="primary" icon="send" @click="send"></vs-button>
       </vs-col>
     </vs-row>
 
