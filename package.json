@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "taiga",
   "scripts": {
-    "heroku-postinstall": "cd client && npm i && npm run build",
-    "start": "cd server && npm i && tsc && node dist/bin/www"
+    "heroku-postinstall": "cd client && npm i && npm run build && cd ../server && npm i && tsc",
+    "start": "node server/dist/bin/www"
   },
   "author": "",
   "license": "ISC"
