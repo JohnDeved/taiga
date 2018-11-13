@@ -26,6 +26,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import Component from 'vue-class-component'
 import { mapState, mapActions } from 'vuex'
 
 interface Imessage {
@@ -33,42 +34,14 @@ interface Imessage {
   id: string
 }
 
-export default Vue.extend({
+@Component({
   name: 'Chat',
   props: {
     msg: String
   },
 
-  data: () => ({
-    textarea: '',
-    messages: [] as Imessage[],
-    chatScroll: 0,
-    chatHeight: 0
-  }),
-
-  computed: {
-    ...mapState(['p2p'])
-  },
-
-  methods: {
-    ...mapActions(['emit']),
-
-    send () {
-      const message = {
-        message: this.textarea,
-        id: this.p2p.peerId
-      }
-      this.p2p.emit('peer-msg', message)
-      this.messages.push(message)
-
-      this.textarea = ''
-    },
-
-    onScroll (data) {
-      this.chatScroll = data.target.scrollTop
-      this.chatHeight = data.target.scrollHeight - data.target.clientHeight
-    }
-  },
+  computed: mapState(['p2p']),
+  methods: mapActions(['emit']),
 
   watch: {
     messages (messages: Imessage) {
@@ -78,9 +51,17 @@ export default Vue.extend({
         this.$refs.chat.scrollTo(0, this.$refs.chat.scrollHeight)
       }, 300)
     }
-  },
+  }
+})
+export default class App extends Vue {
+  private p2p: any
 
-  mounted () {
+  public textarea = ''
+  public messages: Imessage[] = []
+  public chatScroll = 0
+  public chatHeight = 0
+  
+  private mounted () {
     if (localStorage.messages) {
       this.messages = JSON.parse(localStorage.messages)
     }
@@ -89,7 +70,23 @@ export default Vue.extend({
       this.messages.push(data)
     })
   }
-})
+
+  public send () {
+    const message = {
+      message: this.textarea,
+      id: this.p2p.peerId
+    }
+    this.p2p.emit('peer-msg', message)
+    this.messages.push(message)
+
+    this.textarea = ''
+  }
+
+  public onScroll (data) {
+    this.chatScroll = data.target.scrollTop
+    this.chatHeight = data.target.scrollHeight - data.target.clientHeight
+  }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
